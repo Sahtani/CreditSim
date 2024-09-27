@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simuler Mon Crédit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-title">
+        <h1 class="title">Demander mon crédit en ligne</h1>
+    </div>
+
+    <div class="div-container">
+
+        <div class="grid-container">
+            <div class="container">
+
+                <div class="steps">
+
+                    <div class="step active">
+                        <p>1</p>
+                        <p> Simuler mon crédit</p>
+                    </div>
+
+
+                    <div class="step">
+                        <p>2</p>
+                        <p> Mes coordonnées</p>
+                    </div>
+
+                    <div class="step">
+                        <p>3</p>
+                        <p> Mes infos personnelles</p>
+                    </div>
+
+                </div>
+
+                <form class="form-container" id="loanForm">
+                    <div class="form">
+                        <div class="form-group">
+                            <label for="project">Mon projet</label>
+                            <select id="project">
+                                <option value="PRET_PERSONNEL">J’ai besoin d’argent</option>
+                                <option value="OCCASION">Je finance mon véhicule d’occasion</option>
+                                <option value="REV">Je Gère mes imprévus</option>
+                                <option value="CREDIT_AUTOMOBILE">Je finance mon véhicule neuf</option>
+                                <option value="CREDIT_MENAGE">J’équipe ma maison</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Je suis</label>
+                            <select id="status">
+                                <option value="SALARIE_PUBLIC">Fonctionnaire</option>
+                                <option value="SALARIE_PRIVE">Salarié du secteur privé</option>
+                                <option value="PROFESSION_LIBERALE">Profession libérale</option>
+                                <option value="COMMERCANT">Commerçant</option>
+                                <option value="ARTISAN">Artisan</option>
+                                <option value="RETRAITE">Retraité</option>
+                                <option value="AUTRE">Autres professions</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Montant (en DH)</label>
+                            <input type="number" id="amount" min="5000" max="600000" step="100" value="5000">
+                            <input type="range" id="amountRange" min="5000" max="600000" step="100" value="5000"
+                                aria-label="Montant en DH">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">Durée (en mois) :</label>
+                            <input type="number" id="duration" min="12" max="120" step="1" value="24">
+                            <input type="range" id="durationRange" min="12" max="120" step="1" value="24"
+                                aria-label="Durée en mois">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monthly">Mensualités (en DH)</label>
+                            <input type="number" id="monthly" min="20" max="899.83" step="0.01" value="145.69" required>
+                            <input type="range" id="monthlyRange" min="20" max="899.83" step="0.01" value="145.69" aria-label="Mensualités en DH">
+                        </div>
+                        <button class="btn" type="submit">Continuer <br> <small>Sans engagement</small></button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="recap-container">
+                <h3>Mon récapitulatif</h3>
+                <p><strong>Mon projet</strong></p>
+                <p><strong>Prêt Personnel</strong> </p>
+                <div class="jagged-edge"></div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+   
+    <div id="slider-container"></div>
+    <div class="summary" id="summary" style="display: none;">
+        <h2>Détails de mon crédit</h2>
+        <p id="projectSummary"></p>
+        <p id="statusSummary"></p>
+        <p id="amountSummary"></p>
+        <p id="durationSummary"></p>
+        <p id="monthlySummary"></p>
+        <p id="feesSummary"></p>
+    </div>
+    <script>
+
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
