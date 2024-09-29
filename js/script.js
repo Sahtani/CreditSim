@@ -54,30 +54,32 @@ loanForm.addEventListener('submit', function(event) {
     localStorage.setItem('loanDetails', JSON.stringify(loanDetails));
     console.log('Loan Details Saved to Local Storage:', loanDetails);
     
-    document.getElementById('projectSummary').innerText = `Mon projet : ${loanDetails.project}`;
-    document.getElementById('statusSummary').innerText = `Vous êtes : ${loanDetails.status}`;
-    document.getElementById('amountSummary').innerText = `Montant : ${loanDetails.amount} DH`;
-    document.getElementById('durationSummary').innerText = `Durée : ${loanDetails.duration} mois`;
-    document.getElementById('monthlySummary').innerText = `Mensualité : ${loanDetails.monthly} DH`;
-    document.getElementById('feesSummary').innerText = `Frais de dossier : ${loanDetails.fees.toFixed(2)} DH`;
-    document.getElementById('summary').style.display = 'block';
+    // document.getElementById('projectSummary').innerText = `Mon projet : ${loanDetails.project}`;
+    // document.getElementById('statusSummary').innerText = `Vous êtes : ${loanDetails.status}`;
+    // document.getElementById('amountSummary').innerText = `Montant : ${loanDetails.amount} DH`;
+    // document.getElementById('durationSummary').innerText = `Durée : ${loanDetails.duration} mois`;
+    // document.getElementById('monthlySummary').innerText = `Mensualité : ${loanDetails.monthly} DH`;
+    // document.getElementById('feesSummary').innerText = `Frais de dossier : ${loanDetails.fees.toFixed(2)} DH`;
+    // document.getElementById('summary').style.display = 'block';
+
+    window.location = 'summary.html'; 
 });
 
-window.onload = function() {
-    const loanDetails = JSON.parse(localStorage.getItem('loanDetails'));
-    if (loanDetails) {
-        document.getElementById('project').value = loanDetails.project;
-        document.getElementById('status').value = loanDetails.status;
-        document.getElementById('amount').value = loanDetails.amount;
-        document.getElementById('duration').value = loanDetails.duration;
-        document.getElementById('monthly').value = loanDetails.monthly;
-        document.getElementById('summary').style.display = 'block';
-        document.getElementById('projectSummary').innerText = `Mon projet : ${loanDetails.project}`;
-        document.getElementById('statusSummary').innerText = `Vous êtes : ${loanDetails.status}`;
-        document.getElementById('amountSummary').innerText = `Montant : ${loanDetails.amount} DH`;
-        document.getElementById('durationSummary').innerText = `Durée : ${loanDetails.duration} mois`;
-        document.getElementById('monthlySummary').innerText = `Mensualité : ${loanDetails.monthly} DH`;
-        document.getElementById('feesSummary').innerText = `Frais de dossier : ${(loanDetails.amount * 0.0165).toFixed(2)} DH`;
-    }
-};
+// window.onload = function() {
+//     const loanDetails = JSON.parse(localStorage.getItem('loanDetails'));
+//     if (loanDetails) {
+//         document.getElementById('project').value = loanDetails.project;
+//         document.getElementById('status').value = loanDetails.status;
+//         document.getElementById('amount').value = loanDetails.amount;
+//         document.getElementById('duration').value = loanDetails.duration;
+//         document.getElementById('monthly').value = loanDetails.monthly;
+//         document.getElementById('summary').style.display = 'block';
+//         document.getElementById('projectSummary').innerText = `Mon projet : ${loanDetails.project}`;
+//         document.getElementById('statusSummary').innerText = `Vous êtes : ${loanDetails.status}`;
+//         document.getElementById('amountSummary').innerText = `Montant : ${loanDetails.amount} DH`;
+//         document.getElementById('durationSummary').innerText = `Durée : ${loanDetails.duration} mois`;
+//         document.getElementById('monthlySummary').innerText = `Mensualité : ${loanDetails.monthly} DH`;
+//         document.getElementById('feesSummary').innerText = `Frais de dossier : ${(loanDetails.amount * 0.0165).toFixed(2)} DH`;
+//     }
+// };
 

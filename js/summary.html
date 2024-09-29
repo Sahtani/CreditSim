@@ -1,76 +1,141 @@
-<!-- HTML -->
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande de Crédit Rapide</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Formulaire multi-étapes</title>
+    <style>
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="credit-form-container">
-        <h1>Simuler mon crédit</h1>
-        <div class="progress-bar">
-            <div class="step active">1</div>
-            <div class="step">2</div>
-            <div class="step">3</div>
+    <h1>Demander mon crédit en ligne</h1>
+
+    <!-- Premier formulaire (Première étape) -->
+    <form id="multiStepForm">
+        <!-- Étape 1: Simuler mon crédit -->
+        <div id="step1" class="form-section active">
+            <h2>Étape 1: Simuler mon crédit</h2>
+            <label for="project">Mon projet :</label>
+            <select id="project">
+                <option value="PRET_PERSONNEL">J’ai besoin d’argent</option>
+                <option value="OCCASION">Je finance mon véhicule d’occasion</option>
+                <option value="REV">Je Gère mes imprévus</option>
+                <option value="CREDIT_AUTOMOBILE">Je finance mon véhicule neuf</option>
+                <option value="CREDIT_MENAGE">J’équipe ma maison</option>
+            </select>
+
+            <br>
+
+            <label for="amount">Montant (en DH) :</label>
+            <input type="number" id="amount" min="5000" max="600000" step="100" value="5000">
+            
+            <br>
+
+            <label for="duration">Durée (en mois) :</label>
+            <input type="number" id="duration" min="12" max="120" step="1" value="24">
+            
+            <br>
+            <div class="button-container">
+                <button type="button" id="nextStep">Continuer</button>
+            </div>
         </div>
-        <form id="creditForm">
-            <div class="form-step active" id="step1">
-                <h2>Mon projet</h2>
-                <div class="form-group">
-                    <label for="projectType">J'ai besoin d'argent</label>
-                    <select id="projectType">
-                        <option>Sélectionnez une option</option>
-                        <option>Prêt personnel</option>
-                        <option>Crédit auto</option>
-                        <!-- Ajoutez d'autres options ici -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="status">Je suis</label>
-                    <select id="status">
-                        <option>Sélectionnez votre statut</option>
-                        <option>Fonctionnaire</option>
-                        <option>Salarié</option>
-                        <!-- Ajoutez d'autres options ici -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Montant (en DH)</label>
-                    <input type="range" id="amount" min="1000" max="50000" step="100" value="14000">
-                    <output for="amount">14000 DH</output>
-                </div>
-                <div class="form-group">
-                    <label for="duration">Durée (en mois)</label>
-                    <input type="range" id="duration" min="12" max="60" step="1" value="24">
-                    <output for="duration">24 mois</output>
-                </div>
-                <div class="form-group">
-                    <label for="monthly">Mensualités (en DH)</label>
-                    <input type="range" id="monthly" min="100" max="2000" step="0.01" value="657.17">
-                    <output for="monthly">657.17 DH</output>
-                </div>
-                <button type="button" class="next-btn">Suivant</button>
-            </div>
-            
-            <div class="form-step" id="step2">
-                <h2>Mes coordonnées</h2>
-                <!-- Ajoutez les champs pour les coordonnées ici -->
-                <button type="button" class="prev-btn">Précédent</button>
-                <button type="button" class="next-btn">Suivant</button>
-            </div>
-            
-            <div class="form-step" id="step3">
-                <h2>Mes infos personnelles</h2>
-                <!-- Ajoutez les champs pour les infos personnelles ici -->
-                <button type="button" class="prev-btn">Précédent</button>
+
+        <!-- Étape 2: Mes coordonnées (Deuxième étape) -->
+        <div id="step2" class="form-section">
+            <h2>Étape 2: Mes coordonnées</h2>
+            <p><strong>Mon projet :</strong> <span id="projectSummary"></span></p>
+            <p><strong>Montant :</strong> <span id="amountSummary"></span> DH</p>
+            <p><strong>Durée :</strong> <span id="durationSummary"></span> mois</p>
+
+            <br>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" required>
+
+            <br>
+
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" required>
+
+            <div class="button-container">
+                <button type="button" id="prevStep">Retour</button>
                 <button type="submit">Soumettre</button>
             </div>
-        </form>
-    </div>
-    <script src="js/local.js"></script>
+        </div>
+    </form>
+
+    <script>
+        // Récupérer les éléments HTML
+        const form = document.getElementById('multiStepForm');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const nextStep = document.getElementById('nextStep');
+        const prevStep = document.getElementById('prevStep');
+
+        // Récupérer les résumés pour la seconde étape
+        const projectSummary = document.getElementById('projectSummary');
+        const amountSummary = document.getElementById('amountSummary');
+        const durationSummary = document.getElementById('durationSummary');
+
+        // Passer à l'étape suivante
+        nextStep.addEventListener('click', function() {
+            // Récupérer les valeurs du premier formulaire
+            const project = document.getElementById('project').value;
+            const amount = document.getElementById('amount').value;
+            const duration = document.getElementById('duration').value;
+
+            // Afficher les valeurs dans le résumé de la seconde étape
+            projectSummary.textContent = project;
+            amountSummary.textContent = amount;
+            durationSummary.textContent = duration;
+
+            // Masquer la première étape et afficher la deuxième étape
+            step1.classList.remove('active');
+            step2.classList.add('active');
+        });
+
+        // Retourner à l'étape précédente
+        prevStep.addEventListener('click', function() {
+            // Masquer la deuxième étape et afficher la première étape
+            step2.classList.remove('active');
+            step1.classList.add('active');
+        });
+
+        // Soumettre le formulaire
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Récupérer les valeurs
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Vous pouvez maintenant envoyer ces données à un serveur ou faire autre chose
+            console.log({
+                project: document.getElementById('project').value,
+                amount: document.getElementById('amount').value,
+                duration: document.getElementById('duration').value,
+                email,
+                phone
+            });
+
+            alert('Formulaire soumis avec succès !');
+        });
+    </script>
 </body>
+
 </html>
-
-

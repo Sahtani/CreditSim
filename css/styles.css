@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.credit-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  display: flex;
+  margin-bottom: 30px;
+}
+.progress-bar .step {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
+.progress-bar .step .number {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: #a9a9a9;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.progress-bar .step .text {
+  display: block;
+  font-size: 12px;
+}
+.progress-bar .step.completed {
+  background-color: #00b5ad;
+  color: #fff;
+}
+.progress-bar .step.completed .number {
+  background-color: #fff;
+  color: #00b5ad;
+}
+.progress-bar .step.active {
+  background-color: #ffd700;
+}
+.progress-bar .step.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffd700;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  background-color: transparent;
+}
+.form-group input:focus + label, .form-group input:valid + label {
+  top: -20px;
+  font-size: 12px;
+  color: #00b5ad;
+}
+.form-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 16px;
+  color: #999;
+  transition: 0.3s ease all;
+  pointer-events: none;
+}
+
+.recaptcha {
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #00b5ad;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.submit-button .subtext {
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+}
